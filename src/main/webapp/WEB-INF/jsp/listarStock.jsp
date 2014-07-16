@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,13 +7,30 @@
 </head>
 <body>
 	
-	<h1>Title</h1>
+	<h1>Listado de productos en stock</h1>
 	
-	<div>
-		Acá se debe imprimir la lista detallando productos y stock de cada uno de ellos.
-	</div>
+	<h2>¿¿¿COMO CORNO SE MANEJAN LOS FORM???&lt;form:form&gt;</h2>
 	
-	<a href="products/addProduct">Agregar Producto</a>
+	<c:forEach items="${cantidades}" var="q">
+		<span>${q}</span>
+	</c:forEach>
+	<ul>
+	<c:forEach items="${productos}" var="producto">
+		<li>
+			<span>${producto}</span>
+			<a href="/tp-carrito-compras/buying/product/${producto}">comprar</a>
+		</li>
+	</c:forEach>
+	</ul>
+	
+	<ul>
+	<c:forEach items="${stock}" var="stockProducto">
+		<li>${stockProducto}</li>
+	</c:forEach>
+	</ul>
+
+	<a href="productos/listar">Agregar Producto</a>
+	
 	<form>
 		<label for="modifyStock">Modificar Stock:</label>
 		<select id="modifyStock">

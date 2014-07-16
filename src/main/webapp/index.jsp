@@ -6,6 +6,6 @@
     <title>TP - Carrito de compras</title>
 </head>
 <body>
-    <a href="products/listarStock">Ver stock</a>
+    <a href="listarStock">Ver stock</a>
 </body>
 </html>

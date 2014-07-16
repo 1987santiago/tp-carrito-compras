@@ -1,12 +1,12 @@
 package tallerweb.springmvc.utils;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Carrito {
 
 	private static Carrito instance = new Carrito();
-	private Map<String, Integer> unidades = new HashMap<String, Integer>();
+	private List<String> compras = new LinkedList<String>();
 	
 	private Carrito(){}
 	
@@ -17,32 +17,33 @@ public class Carrito {
 	/**
 	 * Limpia el carrito.<br>
 	 */
-	public void vaciarCarrito(){
-		throw new RuntimeException("Implementar");
+	public void vaciaCarrito(){
+		// Implementar
 	}
 	
 	/**
 	 * Agrega un producto al carrito.<br>
 	 * @param producto
-	 * @param cantidad
 	 */
-	public void agregarProducto(String producto, Integer cantidad){
-		throw new RuntimeException("Implementar");
+	public void agregarProducto(String producto){
+		// Implementar
 	}
 	
 	/**
 	 * Lista todas las compras realizadas.<br>
-	 * @return Map
+	 * @return
 	 */
-	public Map<String, Integer> verCarrito(){
-		throw new RuntimeException("Implementar");
+	public List<String> verCarrito(){
+		// Implementar
+		return null;
 	}
 	
 	/**
 	 * Devuelve la cantidad de productos comprados.<br>
-	 * @return Integer
+	 * @return
 	 */
 	public Integer cantidadCompras(){
-		throw new RuntimeException("Implementar");
+		// Implementar
+		return null;
 	}
 }
