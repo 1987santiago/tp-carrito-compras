@@ -2,51 +2,48 @@ package tallerweb.springmvc.controllers;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import tallerweb.springmvc.utils.Producto;
 import tallerweb.springmvc.utils.Stock;
 
 @Controller
 public class ListarStockController {
-	
+
+	/**
+	 * Lista los productos del Stock 
+	 * @return ModelAndView
+	 */
 	@RequestMapping("/listarStock")
 	public ModelAndView listarStock() {
 		
 		Stock stock = Stock.getInstance();
-		stock.agregarProducto("Manzana");
-		stock.agregarProducto("Pera");
-		stock.agregarStock("Manzana", 100);
-		stock.agregarStock("Pera", 40);
+				
+		Map<String, Integer> mapStock = stock.obtenerStock();
+		Set<String> setStock = mapStock.keySet();
+		List<Producto> productList = new ArrayList<Producto>(); 
 		
-		List<String> products = new ArrayList<String>();
+		for (Iterator<String> iterator = setStock.iterator(); iterator.hasNext();) {
+			String nombre = iterator.next();
+			Integer cantidad = mapStock.get(nombre);
 
-		products.add("Tomate");
-		products.add("Zanangoria");
-		products.add("Papa");
-		products.add("S‡ndia");
-
-		/**
-		 * TODO: generar un mapa con la key y el stock de cada producto
-		 * ej: {Ê{"name" : "Tomate", "stock" : 1000}, {"name" : "Papa", "stock" : 400} } 
-		 */
-		
-		// Obtenemos una coleccion con los valores de stock de cada producto
-		Collection<Integer> q = stock.obtenerStock().values();
-		
+			Producto otroProducto = new Producto(nombre, cantidad);
+			productList.add(otroProducto);
+		}
+				
 		ModelMap model = new ModelMap();
 		
 		model.put("nombre", "stockList");
-		model.put("productos", stock.listarProductosDisponibles());
-		model.put("stock", stock.obtenerStock());
-		model.put("cantidades", q);
+		model.put("productos", productList);
+		model.put("productosDisponibles", stock.listarProductosDisponibles());
 		
 		return new ModelAndView("listarStock", model);
 		

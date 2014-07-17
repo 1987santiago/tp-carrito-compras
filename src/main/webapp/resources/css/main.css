@@ -1,0 +1,67 @@
+/**
+ * main.css
+ * Contiene los estilos basicos de la aplicaci—n
+ */
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Base
+----------------------------------------*/
+html, 
+body {
+	height: 100%;
+}
+
+/* Wrapper
+----------------------------------------*/
+.wrapper {
+	min-height: 100%;
+	padding-bottom: 1em;
+}
+.wrapper:after {
+	content: '';
+	display: block;
+	height: 80px; /* similar al alto del footer */
+}
+
+/* Header
+----------------------------------------*/
+header {
+	background-color: #ccedcc;
+	padding: 1em;
+}
+
+/* Footer
+----------------------------------------*/
+footer {
+	background-color: #ededed;
+	height: 80px;
+	margin-top: -80px;
+	padding: 1em;
+}
+
+/* Footer
+----------------------------------------*/
+[data-role="main"] {
+	padding: 1em;
+}
+
+/* General
+----------------------------------------*/
+.product-list  li {
+	margin: .4em 0;
+	position: relative;
+	width: 100%;
+}
+.product-list .action-buttons {
+	display: block;
+	position: absolute;
+	right: 1em;
+	top: 0;
+}

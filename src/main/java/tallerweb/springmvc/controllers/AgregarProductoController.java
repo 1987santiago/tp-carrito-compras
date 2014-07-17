@@ -9,9 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 import tallerweb.springmvc.utils.Stock;
 
 @Controller
-@RequestMapping("/agregarProductos/")
+@RequestMapping("/agregarProductos")
 public class AgregarProductoController {
-	
+
+	/**
+	 * Agrega un nuevo producto al Stock
+	 * @return ModelAndView
+	 */
 	@RequestMapping("/nuevoProducto/{producto}")
 	public ModelAndView agregarProducto( @PathVariable String producto) {
 		
@@ -27,6 +31,5 @@ public class AgregarProductoController {
 		return new ModelAndView("agregarProductos", model);
 		
 	}
-	
 
 }

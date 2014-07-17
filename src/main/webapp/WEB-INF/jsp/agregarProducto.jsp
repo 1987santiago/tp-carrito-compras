@@ -2,24 +2,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html>
 <head>
     <title>Agregar Producto</title>
+    <link href="<c:url value="/resources/css/normalize.css" />" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet" type="text/css">
 </head>
 <body>
-	
-	<h1>Title</h1>
-	
-	<div>
-		Aca se debe agregar un nuevo Producto.
-	</div>
-	
-	<c:out value="${param}"></c:out>	
 
-	<div>
-		<a href="/tp-carrito-compras/listarStock">Volver al listado</a>
+	<div class="wrapper">
+	
+		<header>
+			<h1>Title</h1>
+		</header>
+
+		<div data-role="main">
+
+			<div>
+				Aca se debe agregar un nuevo Producto.
+			</div>
+			
+			<c:out value="${param}"></c:out>	
+		
+			<div>
+				<a href="/tp-carrito-compras/listarStock">Volver al listado</a>
+			</div>
+
+		</div>		
+
 	</div>
+	
+	<c:import url="footer.jsp" charEncoding="ISO-8859-1"></c:import>
 	
 </body>
 

@@ -10,29 +10,28 @@
     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+	
 	<div class="wrapper">
 	
 		<header>
 			<h1>Productos en stock</h1>
 		</header>
-			
+	
 		<div data-role="main">
-		
-			<c:forEach items="${productos}" var="product">
-				<p>${product.nombre}</p>
-			</c:forEach>
 			
-			<h2>Agregar productos:</h2>	
-			<p><a href="/tp-carrito-compras/productos/agregar/Zapallo">Agregar Zapallo</a></p>
-			<p><a href="/tp-carrito-compras/productos/agregar/Melon">Agregar Melón</a></p>
-			<p><a href="/tp-carrito-compras/productos/agregar/Kiwi">Agregar Kiwi</a></p>
+			<p>Producto : ${producto}</p>
+			<p>Stock : ${stock}</p>
 			
-		<%-- 	<form action="agregarProducto.jsp" method="post"> --%>
-		<!-- 		<label for="productName">Nombre de producto</label> -->
-		<!-- 		<input id="productName" name="productName" type="text" /> -->
-		<!-- 		<input type="submit" value="Agregar Producto" /> -->
-		<%-- 	</form> --%>
+			<a href="/tp-carrito-compras/agregarStock/${producto}/cantidad/5">Agregar 5 unidades</a>
+			<a href="/tp-carrito-compras/agregarStock/${producto}/cantidad/10">Agregar 10 unidades</a>
+			<a href="/tp-carrito-compras/agregarStock/${producto}/cantidad/50">Agregar 50 unidades</a>
+			<a href="/tp-carrito-compras/agregarStock/${producto}/cantidad/100">Agregar 100 unidades</a>
+			
+			<%-- Generamos el form para solicitar el ingreso de la cantidad de unidades a agregar 
+			<form:form action="confirmAddStock" method="POST" modelAttribute="carrito">
+				<form:input path="quantity"/>
+			</form:form> --%>
+			
 			<div>
 				<a href="/tp-carrito-compras/listarStock">Volver al listado</a>
 			</div>
