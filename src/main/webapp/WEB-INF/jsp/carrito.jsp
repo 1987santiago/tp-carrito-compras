@@ -20,18 +20,15 @@
 			<ul class="product-list">
 			<c:forEach items="${productos}" var="producto">
 				<li>
-					${producto.nombre} - ${producto.cantidad} 
-					<span class="action-buttons"><a href="/tp-carrito-compras/carrito/remover/${producto.nombre}">Remover</a></span>
+					${producto.nombre} <span class="stock">(${producto.cantidad})</span> 
+					<span class="action-buttons"><a class="delete-link" href="/tp-carrito-compras/carrito/remover/${producto.nombre}">Remover</a></span>
 				</li>
 			</c:forEach>
 			</ul>
 					
-			<div>
-				<a href="/tp-carrito-compras/carrito/vaciar">Vaciar carrito</a>
-			</div>
-			<div>
-				<a href="/tp-carrito-compras/listarStock">Volver al listado</a>
-			</div>
+			<a class="button important-button" href="/tp-carrito-compras/carrito/comprar">Comprar</a>
+			<a class="button relevant-button" href="/tp-carrito-compras/carrito/vaciar">Vaciar carrito</a>
+			<a class="return-link" href="/tp-carrito-compras/listarStock">Volver al listado</a>
 	
 		</div>
 

@@ -19,8 +19,8 @@
 		
 		<div data-role="main">	
 		
-			<p>${producto}</p>	
-			<p>${stock}</p>	
+			<h2>${producto} <span class="stock">Stock (${stock})</span></h2>	
+
 			<c:if test="${stock <= 0}">
 				<p>Stock agotado</p>
 			</c:if>
@@ -29,7 +29,7 @@
 			<form:form method="post" action="/tp-carrito-compras/producto/comprar" modelAttribute="producto">
 				<input type="hidden" id="nombreProducto" name="nombreProducto" value="${producto}" />
 				<div>
-					<label for="cantidadProducto">Seleccione cantidad: </label>
+					<label class="inline-label" for="cantidadProducto">Seleccione cantidad: </label>
 					<select id="cantidadProducto" name="cantidadProducto">
 						<option value="1">1</option>
 						<option value="5">5</option>
@@ -38,12 +38,11 @@
 					</select>
 				</div>
 				<input type="submit" value="agregar al carrito" />
+				<c:if test="${msg != null}"><span class="info-txt">${msg}</span></c:if>
 			</form:form>
 			</c:if>
 		
-			<div>
-				<a href="/tp-carrito-compras/listarStock">Volver al listado</a>
-			</div>
+			<a class="return-link" href="/tp-carrito-compras/listarStock">Volver al listado</a>
 		
 		</div>	
 	

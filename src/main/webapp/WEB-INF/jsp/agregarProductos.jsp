@@ -18,14 +18,10 @@
 		</header>
 			
 		<div data-role="main">
-		
-			<c:forEach items="${productos}" var="product">
-				<p>${product.nombre}</p>
-			</c:forEach>
 			
 			<h2>Agregar productos:</h2>	
 			
-			<form:form method="post" action="/tp-carrito-compras/producto/nuevoProducto" modelAttribute="producto">
+			<form:form method="post" action="/tp-carrito-compras/stock/nuevoProducto" modelAttribute="producto">
 				<div>
 					<label for="nombreProducto">Nombre del producto: </label>
 					<input type="text" id="nombreProducto" name="nombreProducto" />
@@ -34,18 +30,41 @@
 					<label for="cantidadProducto">Cantidad de unidades: </label>
 					<input type="number" id="cantidadProducto" name="cantidadProducto" />
 				</div>
-				<input type="submit" value="agregarProducto" />
+				<input type="submit" value="agregarProducto"/>
+				<a class="return-link" href="/tp-carrito-compras/listarStock">Volver al listado</a>
 			</form:form>
-			
-			<div>
-				<a href="/tp-carrito-compras/listarStock">Volver al listado</a>
+		
+			<c:if test="${hayProductos}">
+			<div class="wrap-list">
+				Productos en Stock: 
+				<ul>
+				<c:forEach items="${productos}" var="product">
+					<li>${product.nombre}</li>
+				</c:forEach>
+				</ul>
 			</div>
+			</c:if>			
 	
 		</div>
 
 	</div>
 		
 	<c:import url="footer.jsp" charEncoding="ISO-8859-1"></c:import>
+	
+	<script type="text/javascript">
+		var form = document.getElementById('producto'),
+			submitBtn = form.querySelector("input[type=submit]");
+		
+		submitBtn.onclick = function(event) {
+			event.preventDefault();
+			if (form.nombreProducto.value != '' && form.cantidadProducto.value != '' && form.cantidadProducto.value > 0) {
+				form.submit();
+			} else {
+				form.nombreProducto.style.backgroundColor = "#ff9090";
+				form.cantidadProducto.style.backgroundColor = "#ff9090";
+			}
+		};
+	</script>
 	
 </body>
 

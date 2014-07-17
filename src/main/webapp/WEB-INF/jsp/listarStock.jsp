@@ -18,22 +18,21 @@
 		</header>
 	
 		<div data-role="main">
-		
+			
 			<ul class="product-list">
 			<c:forEach items="${productos}" var="producto">
 				<li>
-					${producto.nombre} <span>(stock: ${producto.cantidad})</span>
+					${producto.nombre} <span class="stock">(stock: ${producto.cantidad})</span>
 					<span class="action-buttons">
-						<a href="/tp-carrito-compras/buying/product/${producto.nombre}" title="comprar">comprar</a>
+						<a href="/tp-carrito-compras/productos/comprar/${producto.nombre}" title="comprar">comprar</a>
 						<a href="/tp-carrito-compras/agregarStock/${producto.nombre}" title="agregar stock">agregar stock</a>
 					</span>
 				</li>
 			</c:forEach>
 			</ul>
-					
-			<a href="productos/listar">Agregar Producto</a>
-			
-			<div><a href="carrito/listar">Ver mis compras</a></div>
+
+			<a class="button important-button" href="/tp-carrito-compras/productos/listar">Agregar Producto</a>
+			<a class="button secondary-button" href="/tp-carrito-compras/carrito/listar">Ver mis compras</a>
 		
 		</div>
 	

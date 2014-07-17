@@ -27,7 +27,7 @@ body {
 .wrapper:after {
 	content: '';
 	display: block;
-	height: 80px; /* similar al alto del footer */
+	height: 100px; /* similar al alto del footer */
 }
 
 /* Header
@@ -41,9 +41,22 @@ header {
 ----------------------------------------*/
 footer {
 	background-color: #ededed;
-	height: 80px;
-	margin-top: -80px;
+	height: 100px;
+	margin-top: -100px;
 	padding: 1em;
+}
+footer .col {
+	display: inline-block;
+	min-width: 320px;
+	width: 49%;
+}
+footer p {
+	font-size: .8em;
+	line-height: 1.4em;
+	margin: 0;
+}
+footer strongÊ{
+	display: block;
 }
 
 /* Footer
@@ -52,8 +65,67 @@ footer {
 	padding: 1em;
 }
 
+/* Form 
+----------------------------------------*/
+form > div {
+	margin-bottom: 4px;
+}
+label {
+	display: block;
+}
+.inline-label {
+	display: inline-block;
+}
+input[type="text"] {
+	margin-bottom: 4px;
+}
+input[type="submit"],
+.button {
+	border: 0;
+	border-radius: 4px;
+	padding: 1em;
+	margin: 10px 0;
+}
+input[type="submit"] {
+	background-color: #7070FF;
+	color: #fff;
+}
+
+/* Links 
+----------------------------------------*/
+a {
+	text-decoration: none;
+}
+.return-link {
+	display: inline-block;
+	margin: 1em;
+}
+.delete-link {
+	color: #F88;
+}
+.button {
+	display: inline-block;
+}
+.important-button {
+	background-color: #7070FF;
+	color: #fff;
+}
+.secondary-button {
+	background-color: #DDD;
+	color: #fff;
+}
+.relevant-button {
+	background-color: #F88;
+	color: #fff;
+}
+
 /* General
 ----------------------------------------*/
+.wrap-list {
+	background-color: #eee;
+	border-radius: 4px;
+	padding: 1em;
+}
 .product-list  li {
 	margin: .4em 0;
 	position: relative;
@@ -64,4 +136,17 @@ footer {
 	position: absolute;
 	right: 1em;
 	top: 0;
+}
+.stock {
+	color: #ccc;
+	font-size: .8em;
+	font-weight: normal;
+	line-height: 1.2em;
+}
+.info-txt {
+	color: #f88;
+	display: inline-block;
+	font-size: .8em;
+	max-width: 150px;
+	margin-left: 1em;
 }

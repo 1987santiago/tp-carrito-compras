@@ -144,4 +144,38 @@ public class CarritoController {
 		return new ModelAndView("carrito", model);
 		
 	}
+
+	/**
+	 * Este metodo ejecuta la compra.
+	 * @return ModelAndView 
+	 */
+	@RequestMapping("/comprar")
+	public ModelAndView comprar() {
+		
+		Carrito carrito = Carrito.getInstance();
+		Stock stock = Stock.getInstance();
+				
+		carrito.vaciaCarrito();
+				
+		Map<String, Integer> mapStock = stock.obtenerStock();
+		Set<String> setStock = mapStock.keySet();
+		List<Producto> productList = new ArrayList<Producto>(); 
+		
+		for (Iterator<String> iterator = setStock.iterator(); iterator.hasNext();) {
+			String nombre = iterator.next();
+			Integer cantidad = mapStock.get(nombre);
+
+			Producto otroProducto = new Producto(nombre, cantidad);
+			productList.add(otroProducto);
+		}
+				
+		ModelMap model = new ModelMap();
+		
+		model.put("nombre", "stockList");
+		model.put("productos", productList);
+		
+		return new ModelAndView("listarStock", model);
+		
+	}
+		
 }

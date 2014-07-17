@@ -8,10 +8,8 @@ import java.util.Set;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import tallerweb.springmvc.utils.Producto;
@@ -19,7 +17,7 @@ import tallerweb.springmvc.utils.Stock;
 
 @Controller
 @RequestMapping("/productos")
-public class AgregarProductosController {
+public class ProductosController {
 
 	/**
 	 * Agrega el producto pasado por parametro al Stock (si no existe)
@@ -75,10 +73,34 @@ public class AgregarProductosController {
 			productList.add(otroProducto);
 		}
 		
+		Boolean hayProductos = (productList.size() >= 1);
+		
 		ModelMap model = new ModelMap();
 		model.put("productos", productList);
+		model.put("hayProductos", hayProductos);
 		
 		return new ModelAndView("agregarProductos", model);
+		
+	}
+	
+	/**
+	 * En base al producto pasado por parametro,<br> 
+	 * obtiene su stock y lo muestra. 
+	 * @param String producto
+	 * @return ModelAndView
+	 */
+	@RequestMapping("/comprar/{producto}")
+	public ModelAndView comprar(@PathVariable String producto) {
+		
+		Stock stock = Stock.getInstance();
+		Integer availableStock = stock.obtenerStockDisponible(producto);
+		
+		ModelMap model = new ModelMap();
+		
+		model.put("producto", producto);
+		model.put("stock", availableStock);
+		
+		return new ModelAndView("comprarProducto", model);
 		
 	}
 

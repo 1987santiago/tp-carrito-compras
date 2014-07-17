@@ -1,7 +1,6 @@
 package tallerweb.springmvc.controllers;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +42,6 @@ public class ListarStockController {
 		
 		model.put("nombre", "stockList");
 		model.put("productos", productList);
-		model.put("productosDisponibles", stock.listarProductosDisponibles());
 		
 		return new ModelAndView("listarStock", model);
 		

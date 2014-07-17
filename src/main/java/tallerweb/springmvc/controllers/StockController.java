@@ -18,7 +18,7 @@ import tallerweb.springmvc.utils.Producto;
 import tallerweb.springmvc.utils.Stock;
 
 @Controller
-@RequestMapping(value="producto")
+@RequestMapping(value="stock")
 public class StockController {
 		
 	@RequestMapping(value="nuevoProducto", method=RequestMethod.POST)
@@ -43,8 +43,11 @@ public class StockController {
 			productList.add(otroProducto);
 		}
 		
+		Boolean hayProductos = (productList.size() >= 1);
+
 		ModelMap model = new ModelMap();
 		model.put("productos", productList);
+		model.put("hayProductos", hayProductos);
 		
 		return new ModelAndView("agregarProductos", model);
 
