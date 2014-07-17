@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -106,10 +107,16 @@ public class CarritoController {
 		
 		// Obtenemos la los productos y cantidades del carrito de compras (Mapa)
 		Map<String, Integer> mapCompras = carrito.verCarritoConCantidades();
+		// Convertimos ese mapa a un conjunto para poder iterarlo y obtener sus datos por separado
 		Set<String> setCompras = mapCompras.keySet();
+		// Generamos una lista para guardar los productos que vamos a enviar a la vista
 		List<Producto> productList = new ArrayList<Producto>(); 
 		
+		// Generamos una mapa que contendr‡ los productos eliminados
+		Map<String, Integer> removedMap = new TreeMap<String, Integer>();
+		
 		for (Iterator<String> iterator = setCompras.iterator(); iterator.hasNext();) {
+			
 			String nombre = iterator.next();
 			Integer cantidad = mapCompras.get(nombre);
 			
@@ -117,11 +124,17 @@ public class CarritoController {
 			
 			if (nombre.contentEquals(producto)) {
 				stock.agregarStock(otroProducto.getNombre(), otroProducto.getCantidad());
-				carrito.quitarProducto(otroProducto.getNombre());
+				removedMap.put(nombre, cantidad);
 			} else {				
 				productList.add(otroProducto);
 			}
 			
+		}
+
+		// Quitamos del carrito los productos eliminados
+		for (Iterator<String> iterator = removedMap.keySet().iterator(); iterator.hasNext();) {
+			String nombre = iterator.next();
+			carrito.quitarProducto(nombre);
 		}
 
 		ModelMap model = new ModelMap();

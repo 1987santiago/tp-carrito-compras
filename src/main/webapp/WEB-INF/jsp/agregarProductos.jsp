@@ -24,15 +24,19 @@
 			</c:forEach>
 			
 			<h2>Agregar productos:</h2>	
-			<p><a href="/tp-carrito-compras/productos/agregar/Zapallo">Agregar Zapallo</a></p>
-			<p><a href="/tp-carrito-compras/productos/agregar/Melon">Agregar Melón</a></p>
-			<p><a href="/tp-carrito-compras/productos/agregar/Kiwi">Agregar Kiwi</a></p>
 			
-		<%-- 	<form action="agregarProducto.jsp" method="post"> --%>
-		<!-- 		<label for="productName">Nombre de producto</label> -->
-		<!-- 		<input id="productName" name="productName" type="text" /> -->
-		<!-- 		<input type="submit" value="Agregar Producto" /> -->
-		<%-- 	</form> --%>
+			<form:form method="post" action="/tp-carrito-compras/producto/nuevoProducto" modelAttribute="producto">
+				<div>
+					<label for="nombreProducto">Nombre del producto: </label>
+					<input type="text" id="nombreProducto" name="nombreProducto" />
+				</div>
+				<div>
+					<label for="cantidadProducto">Cantidad de unidades: </label>
+					<input type="number" id="cantidadProducto" name="cantidadProducto" />
+				</div>
+				<input type="submit" value="agregarProducto" />
+			</form:form>
+			
 			<div>
 				<a href="/tp-carrito-compras/listarStock">Volver al listado</a>
 			</div>

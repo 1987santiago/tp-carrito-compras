@@ -22,16 +22,15 @@
 			<p>Producto : ${producto}</p>
 			<p>Stock : ${stock}</p>
 			
-			<a href="/tp-carrito-compras/agregarStock/${producto}/cantidad/5">Agregar 5 unidades</a>
-			<a href="/tp-carrito-compras/agregarStock/${producto}/cantidad/10">Agregar 10 unidades</a>
-			<a href="/tp-carrito-compras/agregarStock/${producto}/cantidad/50">Agregar 50 unidades</a>
-			<a href="/tp-carrito-compras/agregarStock/${producto}/cantidad/100">Agregar 100 unidades</a>
-			
-			<%-- Generamos el form para solicitar el ingreso de la cantidad de unidades a agregar 
-			<form:form action="confirmAddStock" method="POST" modelAttribute="carrito">
-				<form:input path="quantity"/>
-			</form:form> --%>
-			
+			<form:form method="post" action="/tp-carrito-compras/producto/agregarStock" modelAttribute="producto">
+				<input type="hidden" id="nombreProducto" name="nombreProducto" value="${producto}" />
+				<div>
+					<label for="cantidadProducto">Cantidad de unidades: </label>
+					<input type="number" id="cantidadProducto" name="cantidadProducto" />
+				</div>
+				<input type="submit" value="sumar stock" disabled="disabled"/>
+			</form:form>
+						
 			<div>
 				<a href="/tp-carrito-compras/listarStock">Volver al listado</a>
 			</div>
@@ -41,6 +40,21 @@
 	</div>
 		
 	<c:import url="footer.jsp" charEncoding="ISO-8859-1"></c:import>
+	
+	<script type="text/javascript">
+		var form = document.getElementById('producto'),
+			submitBtn = form.querySelector("input[type=submit]");
+		
+		form.cantidadProducto.onchange = function(event) {
+
+			if (form.cantidadProducto.value !== '' && form.cantidadProducto.value > 0) {
+				submitBtn.disabled = false;
+			} else if (form.cantidadProducto.value <= 0) {
+				submitBtn.disabled = true;				
+			}
+			
+		};
+	</script>
 	
 </body>
 

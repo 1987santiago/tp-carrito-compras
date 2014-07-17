@@ -16,9 +16,7 @@
 		</header>
 
 		<div data-role="main">
-				
-			<h2>¿¿¿COMO CORNO SE MANEJAN LOS FORM???&lt;form:form&gt;</h2>
-			
+							
 			<ul class="product-list">
 			<c:forEach items="${productos}" var="producto">
 				<li>

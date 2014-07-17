@@ -21,10 +21,25 @@
 		
 			<p>${producto}</p>	
 			<p>${stock}</p>	
-			<c:if test="${message != ''}">
-				<p>${message}</p>
+			<c:if test="${stock <= 0}">
+				<p>Stock agotado</p>
 			</c:if>
-			<a href="/tp-carrito-compras/buying/product/${producto}/10">Comprar 10</a>
+						
+			<c:if test="${stock > 0}">
+			<form:form method="post" action="/tp-carrito-compras/producto/comprar" modelAttribute="producto">
+				<input type="hidden" id="nombreProducto" name="nombreProducto" value="${producto}" />
+				<div>
+					<label for="cantidadProducto">Seleccione cantidad: </label>
+					<select id="cantidadProducto" name="cantidadProducto">
+						<option value="1">1</option>
+						<option value="5">5</option>
+						<option value="10">10</option>
+						<option value="50">50</option>
+					</select>
+				</div>
+				<input type="submit" value="agregar al carrito" />
+			</form:form>
+			</c:if>
 		
 			<div>
 				<a href="/tp-carrito-compras/listarStock">Volver al listado</a>
